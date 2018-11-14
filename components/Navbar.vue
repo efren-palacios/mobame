@@ -5,10 +5,10 @@
       <p class="text-center text-lg logo"><a href="#">MOBA<span class="blue">ME</span></a></p>
     </div>
     <div class="sm:w-4/5 md:w-2/6 lg:w-3/6 flex">
-      <a href="#">
-        <div class="rounded-l bg-blue-dark text-white px-6 py-3 hover:bg-blue"><i class="fas fa-search"></i></div>
-      </a>
-      <input placeholder="Search for a summoner..." type="text" class="rounded-r bg-grey-darkest text-white px-6 py-3 ">
+    <form @submit.prevent="submit" class="flex" action="">
+      <input v-model="search" autofocus placeholder="Search for a summoner..." type="text" class="rounded-l bg-grey-darkest text-white px-6 py-3 ">
+      <button v-on:click="search" class="rounded-r bg-blue-dark text-white px-6 py-3 hover:bg-blue"><i class="fas fa-search"></i></button>
+    </form>
     </div>
     <div class="flex items-center justify-around lg:w-2/6 sm:w-2/5">
       <a href="#">
@@ -31,3 +31,19 @@
     </div>
 </section>
 </template>
+
+<script>
+export default {
+  components: {},
+  data() {
+    return {
+      search: ''
+    }
+  },
+  methods: {
+    submit(event) {
+      this.$router.push(`/summoner/${this.search}`)
+    }
+  }
+}
+</script>
