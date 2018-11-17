@@ -38,13 +38,21 @@
   </div>
   <div class="darken">
     <div class="flex text-white mx-auto champion p-2 border-b border-solid border-grey-light">
-      <div class="background"></div>
-      <div class="m-3"><img class="w-32 border-4 border-solid shadow-md " src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon3506.jpg" alt=""></div>
+      <div v-if="masteries.length > 1">
+        <div :key="bg" v-for="bg of masteries.slice(0,1)">
+        <div :style="{backgroundImage: 'url(https://cdn.communitydragon.org/8.21.1/champion/'+bg.championId+'/splash-art/centered/skin/0)' || 'https://cdn.communitydragon.org/8.21.1/champion/53/splash-art/centered/skin/5'}" class="background"></div>
+      </div>
+      </div>
+      <div v-else>
+        <div style="background-image: url('https://cdn.communitydragon.org/8.21.1/champion/53/splash-art/centered/skin/5')" class="background"></div>
+        </div>
+      <!-- <div ref="bg" :style="{backgroundImage: 'url(https://cdn.communitydragon.org/8.21.1/champion/'+masteries.shift()+'/splash-art/centered/skin/0)'}" class="background"></div> -->
+      <div class="m-3"><img class="w-32 border-4 border-solid shadow-md " :src="'https://opgg-static.akamaized.net/images/profile_icons/profileIcon' + icon + '.jpg' " alt=""></div>
       <div class="flex flex-col w-2/5 my-4">
 
         <div class="flex items-center">
 
-          <p class="text-4xl font-hairline tracking-wide text-shadow">Darvec</p>
+          <p class="text-4xl font-hairline tracking-wide text-shadow">{{name}}</p>
           <div class="px-2 ml-2 bg-green rounded-sm"><i class="fas fa-rss"></i> <span class="font-bold">Online</span></div>
           <a href="#">
             <div class="uppercase tracking-wide px-2 ml-2 bg-purple rounded-sm"><i class="fab fa-twitch"></i> <span class="font-bold">Streaming</span></div>
@@ -53,14 +61,14 @@
         <!-- end of darvec -->
         <div class="flex my-2 text-shadow">
           <div><i class="fas ml-1 fa-globe-americas"></i> <span class="mr-3">North America</span></div>
-          <div><i class="fas ml-1 fa-certificate"></i> Level 135</div>
+          <div><i class="fas ml-1 fa-certificate"></i> Level {{level}}</div>
         </div>
         <div class="mt-4"><i class="fas fa-check-circle text-green"></i>
 
           <span class="font-bold text-black">Verified User</span> </div>
         <div><i class="far fa-clock text-black"></i>
 
-          <span class="text-black">Updated 2 Days Ago</span> </div>
+          <span class="text-black">Updated {{time}}</span> </div>
       </div>
       <div class="flex justify-end my-5 flex-grow">
         <div class="flex flex-col">
@@ -103,3 +111,31 @@
   </div>
 </main>
 </template>
+
+<script>
+import moment from 'moment'
+
+export default {
+  component: {},
+  computed: {
+    masteries() {
+      return this.$store.state.masteries
+    },
+    time() {
+      return moment(this.$store.state.summoner.revisionDate).fromNow()
+    },
+    level() {
+      return this.$store.state.summoner.summonerLevel
+    },
+    name() {
+      return this.$store.state.summoner.name
+    },
+    icon() {
+      return this.$store.state.summoner.profileIconId
+    },
+    rank() {
+      return this.$store.state.rank
+    }
+  }
+}
+</script>

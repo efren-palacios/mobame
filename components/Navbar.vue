@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     submit(event) {
+      event.preventDefault()
       this.$router.push(`/summoner/${this.search}`)
     }
   }

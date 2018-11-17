@@ -10,35 +10,34 @@
 		</div>
 		<div class="flex items-center ">
 			<div class="flex flex-col w-full">
-				<div class="flex items-center border-b border-solid border-grey-light mx-4">
-					<img class="mx-2 w-24" src="http://opgg-static.akamaized.net/images/medals/diamond_3.png" alt="" />
+				<div class="flex flex-col">
+					<div :key="data" v-bind="rank" v-for="data of rank.slice().reverse()" class="flex items-center mx-4">
+					<img class="mx-2 w-24" :src="'http://opgg-static.akamaized.net/images/medals/' + data.tier.toLowerCase() + '_' + ranktier[data.rank.toLowerCase()] + '.png'" alt="" />
 					<div>
-						<p class="font-bold">Ranked Solo/Duo</p>
-						<p class="text-blue">Diamond 2 
-							<span class="text-grey-dark">in Shyvana's Tricksters</span>
+						<p class="font-bold">{{rankname[data.queueType]}}</p>
+						<p class="text-blue capitalize">{{data.tier.toLowerCase()}} {{data.rank}}
+							<span class="text-grey-dark">in {{data.leagueName}}</span>
 						</p>
 						<p class="text-grey-dark">
-							<span class="font-bold text-grey-darker ">0 LP</span> with 
-							<span class="font-bold text-grey-darker ">514W / 522L </span>
+							<span class="font-bold text-grey-darker ">{{data.leaguePoints}} LP</span> with 
+							<span class="font-bold text-grey-darker ">{{data.wins}}W / {{data.losses}}L </span>
 						</p>
 					</div>
 				</div>
-				<div class="flex items-center mx-4">
-					<img class="mx-2 w-24" src="http://opgg-static.akamaized.net/images/medals/gold_1.png" alt="" />
-					<div>
-						<p class="font-bold">Ranked Solo/Duo</p>
-						<p class="text-blue">Gold 1 
-							<span class="text-grey-dark">in Swain's Giants</span>
-						</p>
-						<p class="text-grey-dark">
-							<span class="font-bold text-grey-darker ">18 LP</span> with 
-							<span class="font-bold text-grey-darker ">8W / 8L </span>
-						</p>
-					</div>
+        <div>
+        </div>
 				</div>
 			</div>
 		</div>
 	</div>
+  <div class="flex justify-around m-5 items-center">
+  <div :key="champs" v-bind="masteries" v-for="champs of masteries.slice(0, 3)">
+        <div class="flex flex-col items-center">
+          <img width="70px" :src="'https://cdn.communitydragon.org/8.21.1/champion/'+champs.championId+'/square' " alt="" srcset="">
+          <img width="50px" :src="'https://raw.communitydragon.org/latest/game/assets/loadouts/summoneremotes/rewards/mastery/em_champ_mastery_0'+champs.championLevel+'_selector.summoneremotes_v2.png'" alt="">
+        </div>
+  </div>
+  </div>
 </div>
   <div class="container text-black bg-white">
     
@@ -165,23 +164,23 @@
             <div class="matchup flex flex-grow justify-end">
               <div class="flex flex-col m-2">
                 <div class="flex players items-center">
-                  <img src="https://cdn.communitydragon.org/latest/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
+                  <img src="https://cdn.communitydragon.org/8.21.1/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
                 </div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
                 </div>
               </div>
               <!-- Opponents -->
               <div class="flex flex-col m-2">
                 <div class="flex players items-center">
-                  <img src="https://cdn.communitydragon.org/latest/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
+                  <img src="https://cdn.communitydragon.org/8.21.1/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
                 </div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/latest/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
+                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
                 </div>
               </div>
             </div>
@@ -203,6 +202,18 @@
 
 <script>
 import DoughnutChart from '~/components/doughnut-chart'
+let tier = {
+  i: '1',
+  ii: '2',
+  iii: '3',
+  iv: '4',
+  v: '5'
+}
+let rankName = {
+  RANKED_SOLO_5x5: 'Ranked Solo/Duo',
+  RANKED_FLEX_TT: 'Ranked Twisted Treeline',
+  RANKED_FLEX_SR: 'Ranked Flex'
+}
 export default {
   components: { DoughnutChart },
   data() {
@@ -226,6 +237,20 @@ export default {
           display: false
         }
       }
+    }
+  },
+  computed: {
+    masteries() {
+      return this.$store.state.masteries
+    },
+    rank() {
+      return this.$store.state.rank
+    },
+    ranktier() {
+      return tier
+    },
+    rankname() {
+      return rankName
     }
   }
 }

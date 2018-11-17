@@ -107,7 +107,7 @@ a {
 }
 
 .background {
-  background-image: url('https://cdn.communitydragon.org/8.16.1/champion/Poppy/splash-art/centered/skin/0');
+  /* background-image: url('https://cdn.communitydragon.org/8.16.1/champion/Poppy/splash-art/centered/skin/0'); */
   background-position: center 25%;
   position: absolute;
   height: 50%;

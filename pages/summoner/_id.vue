@@ -15,6 +15,7 @@ export default {
     NavBar,
     Main,
     Data
-  }
+  },
+  middleware: 'search'
 }
 </script>

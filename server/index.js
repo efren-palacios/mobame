@@ -4,7 +4,7 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
-
+const axios = require('axios')
 app.set('port', port)
 
 // Import and Set Nuxt.js options
@@ -20,6 +20,65 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  app.get('/riot-api/:region/:summoner', async (req, res) => {
+    const region = req.params.region
+    const summoner = req.params.summoner
+    res.contentType('json')
+    try {
+      const { data } = await axios({
+        responseType: 'stream',
+        method: 'get',
+        url: `https://${region}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summoner}`,
+        headers: {
+          'X-Riot-Token': 'key'
+        }
+      })
+      data.pipe(res)
+    } catch (e) {
+      console.log(e)
+      res.status(500).send()
+    }
+  })
+  app.get('/riot-api/:region/:summoner/rank', async (req, res) => {
+    const region = req.params.region
+    const summoner = req.params.summoner
+    res.contentType('json')
+    try {
+      const { data } = await axios({
+        responseType: 'stream',
+        method: 'get',
+        url: `https://${region}.api.riotgames.com/lol/league/v3/positions/by-summoner/${summoner}`,
+        headers: {
+          'X-Riot-Token': 'key'
+        }
+      })
+      data.pipe(res)
+    } catch (e) {
+      console.log(e)
+      res.status(500).send()
+    }
+  })
+
+  app.get('/riot-api/:region/:summoner/masteries', async (req, res) => {
+    const region = req.params.region
+    const summoner = req.params.summoner
+    res.contentType('json')
+    try {
+      const { data } = await axios({
+        responseType: 'stream',
+        method: 'get',
+        url: `https://${region}.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/${summoner}`,
+        headers: {
+          'X-Riot-Token': 'key'
+        }
+      })
+      data.pipe(res)
+    } catch (e) {
+      console.log(e)
+      res.status(500).send()
+    }
+  })
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

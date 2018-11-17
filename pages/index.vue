@@ -1,20 +1,14 @@
 <template>
   <div>
-  <NavBar />
-  <Main />
-  <Data />
+    <Search/>
   </div>
 </template>
 
 <script>
-import NavBar from '~/components/Navbar.vue'
-import Main from '~/components/Main.vue'
-import Data from '~/components/Data.vue'
+import Search from '~/components/Search.vue'
 export default {
   components: {
-    NavBar,
-    Main,
-    Data
+    Search
   }
 }
 </script>
