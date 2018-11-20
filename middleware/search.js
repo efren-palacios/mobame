@@ -24,6 +24,10 @@ export default function({ params, store }) {
         `/riot-api/na1/${summoner.data.id}/masteries`
       )
       store.commit('addmasteries', masteries.data)
+      const matches = await axios.get(
+        `/riot-api/na1/${summoner.data.accountId}/matches`
+      )
+      store.commit('addmatches', matches.data)
     } catch (error) {
       console.log(error)
     }

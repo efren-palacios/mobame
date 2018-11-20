@@ -6,7 +6,7 @@ const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 const axios = require('axios')
 app.set('port', port)
-
+const key = require('../config.json').api
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -31,7 +31,7 @@ async function start() {
         method: 'get',
         url: `https://${region}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summoner}`,
         headers: {
-          'X-Riot-Token': 'key'
+          'X-Riot-Token': key
         }
       })
       data.pipe(res)
@@ -50,7 +50,7 @@ async function start() {
         method: 'get',
         url: `https://${region}.api.riotgames.com/lol/league/v3/positions/by-summoner/${summoner}`,
         headers: {
-          'X-Riot-Token': 'key'
+          'X-Riot-Token': key
         }
       })
       data.pipe(res)
@@ -70,7 +70,26 @@ async function start() {
         method: 'get',
         url: `https://${region}.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/${summoner}`,
         headers: {
-          'X-Riot-Token': 'key'
+          'X-Riot-Token': key
+        }
+      })
+      data.pipe(res)
+    } catch (e) {
+      console.log(e)
+      res.status(500).send()
+    }
+  })
+  app.get('/riot-api/:region/:summoner/matches', async (req, res) => {
+    const region = req.params.region
+    const summoner = req.params.summoner
+    res.contentType('json')
+    try {
+      const { data } = await axios({
+        responseType: 'stream',
+        method: 'get',
+        url: `https://${region}.api.riotgames.com/lol/match/v3/matchlists/by-account/${summoner}`,
+        headers: {
+          'X-Riot-Token': key
         }
       })
       data.pipe(res)
