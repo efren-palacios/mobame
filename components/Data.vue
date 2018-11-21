@@ -128,12 +128,13 @@
 		</div>
 	</div>
 </div>
-    <div class="container text-black bg-white">
+    <div :key="match" v-for="match of matches.slice(0,5)" class="container text-black bg-white">
       <div class="my-4  mx-5 shadow text-black win">
           <div class="flex items-center mx-4">
             <div class="flex flex-col items-center">
-              <img class="mx-2 w-16 rounded-full" src="https://cdn.communitydragon.org/8.21.1/champion/34/square" alt="">
-              <p class="font-bold">Thresh</p>
+              <img class="mx-2 w-16 rounded-full" :src="'https://cdn.communitydragon.org/8.21.1/champion/'+match.champion+'/square'" alt="">
+              <p class="font-bold">{{champname[match.champion]}}</p>
+              <p class="font-bold text-blue-dark text-xs">{{match.lane}}</p>
             </div>
             <div class="flex flex-col">
               <div><img class="w-10" src="https://raw.communitydragon.org/latest/game/data/spells/icons2d/summoner_flash.png" alt=""></div>
@@ -191,7 +192,7 @@
               <p><span class="text-green-dark font-bold">Victory</span> at <span class="font-bold">51m 21s</span> in <span class="font-bold">Normal</span></p>
             </div>
             <div class="scorefooter">
-              <p><span class="font-bold">2 Days Ago</span> in <span class="font-bold">Summoner's Rift</span></p>
+              <p><span class="font-bold">{{time(match.timestamp)}}</span> in <span class="font-bold">Summoner's Rift</span></p>
             </div>
           </div>
           </div>
@@ -202,6 +203,7 @@
 
 <script>
 import DoughnutChart from '~/components/doughnut-chart'
+import moment from 'moment'
 let tier = {
   i: '1',
   ii: '2',
@@ -370,9 +372,9 @@ export default {
             data: [11, 9],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)'
+              'rgba(56, 193, 114, 0.2)'
             ],
-            borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)'],
+            borderColor: ['rgba(255,99,132,1)', 'rgba(56, 193, 114, 1)'],
             borderWidth: 1
           }
         ]
@@ -387,6 +389,9 @@ export default {
   methods: {
     championName: function(name) {
       return this.champname[name]
+    },
+    time: function(time) {
+      return moment(time).fromNow()
     }
   },
   computed: {
@@ -397,7 +402,7 @@ export default {
       return this.$store.state.rank
     },
     matches() {
-      return this.$store.state.matches
+      return this.$store.state.matches.matches
     },
     ranktier() {
       return tier
