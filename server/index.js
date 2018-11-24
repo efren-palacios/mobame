@@ -98,6 +98,25 @@ async function start() {
       res.status(500).send()
     }
   })
+  app.get('/riot-api/:region/matches/:match', async (req, res) => {
+    const region = req.params.region
+    const match = req.params.match
+    res.contentType('json')
+    try {
+      const { data } = await axios({
+        responseType: 'stream',
+        method: 'get',
+        url: `https://${region}.api.riotgames.com/lol/match/v3/matches/${match}`,
+        headers: {
+          'X-Riot-Token': key
+        }
+      })
+      data.pipe(res)
+    } catch (e) {
+      console.log(e)
+      res.status(500).send()
+    }
+  })
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

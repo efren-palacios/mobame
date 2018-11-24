@@ -28,6 +28,18 @@ export default function({ params, store }) {
         `/riot-api/na1/${summoner.data.accountId}/matches`
       )
       store.commit('addmatches', matches.data)
+      matches.data.matches.slice(0, 5).forEach(r => {
+        let match = axios.get(`/riot-api/na1/matches/${r.gameId}`)
+        match.then(r => {
+          store.commit('addmatch', r.data)
+          let player = r.data.participantIdentities.findIndex(function(
+            participant
+          ) {
+            return participant.player.summonerId == summoner.data.id
+          })
+          store.commit('addparticipant', player)
+        })
+      })
     } catch (error) {
       console.log(error)
     }

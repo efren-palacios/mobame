@@ -11,7 +11,7 @@
 		<div class="flex items-center ">
 			<div class="flex flex-col w-full">
 				<div class="flex flex-col">
-					<div :key="data" v-bind="rank" v-for="data of rank.slice().reverse()" class="flex items-center mx-4">
+					<div :key="index" v-bind="rank" v-for="(data, index) of rank.slice().reverse()" class="flex items-center mx-4">
 					<img class="mx-2 w-24" :src="'http://opgg-static.akamaized.net/images/medals/' + data.tier.toLowerCase() + '_' + ranktier[data.rank.toLowerCase()] + '.png'" alt="" />
 					<div>
 						<p class="font-bold">{{rankname[data.queueType]}}</p>
@@ -31,7 +31,7 @@
 		</div>
 	</div>
   <div class="flex justify-around m-5 items-center">
-  <div :key="champs" v-bind="masteries" v-for="champs of masteries.slice(0, 3)">
+  <div :key="index" v-bind="masteries" v-for="(champs, index) of masteries">
         <div class="flex flex-col items-center">
           <img width="70px" :src="'https://cdn.communitydragon.org/8.21.1/champion/'+champs.championId+'/square' " alt="" srcset="">
           <img width="50px" :src="'https://raw.communitydragon.org/latest/game/assets/loadouts/summoneremotes/rewards/mastery/em_champ_mastery_0'+champs.championLevel+'_selector.summoneremotes_v2.png'" alt="">
@@ -114,7 +114,7 @@
 					</div>
 				</div>
 				<div class="flex items-center mx-4">
-					<img class="mx-2 w-10 rounded-full" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Mid_icon.png" alt=""/>
+					<img class="mx-2 w-10 rounded-full" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/9/98/Middle_icon.png" alt=""/>
 					<div>
 						<p class="font-bold">Middle</p>
 						<p>
@@ -128,60 +128,42 @@
 		</div>
 	</div>
 </div>
-    <div :key="match" v-for="match of matches.slice(0,5)" class="container text-black bg-white">
-      <div class="my-4  mx-5 shadow text-black win">
+    <div :key="index" v-for="(player, index) of participant" class="container text-black bg-white">
+      <div class="my-4  mx-5 shadow text-black" :class="{'win':(matchlist[index].participants[player].stats.win == true), 'loss':(matchlist[index].participants[player].stats.win == false)}">
           <div class="flex items-center mx-4">
             <div class="flex flex-col items-center">
-              <img class="mx-2 w-16 rounded-full" :src="'https://cdn.communitydragon.org/8.21.1/champion/'+match.champion+'/square'" alt="">
-              <p class="font-bold">{{champname[match.champion]}}</p>
-              <p class="font-bold text-blue-dark text-xs">{{match.lane}}</p>
+            <img class="mx-2 w-16 rounded-full" :src="'https://cdn.communitydragon.org/8.21.1/champion/'+matchlist[index].participants[player].championId+'/square'" alt="">
+              <p class="font-bold">{{champname[matchlist[index].participants[player].championId]}}</p>
+              <!-- <p class="font-bold text-blue-dark text-xs">{{match.lane}}</p> -->
             </div>
             <div class="flex flex-col">
-              <div><img class="w-10" src="https://raw.communitydragon.org/latest/game/data/spells/icons2d/summoner_flash.png" alt=""></div>
-              <div><img class="w-10" src="https://raw.communitydragon.org/latest/game/data/spells/icons2d/summonerignite.png" alt=""></div>
+              <div><img class="w-10" :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/spell/'+summonername[matchlist[index].participants[player].spell1Id]+'.png'" alt=""></div>
+              <div><img class="w-10" :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/spell/'+summonername[matchlist[index].participants[player].spell2Id]+'.png'" alt=""></div>
             </div>
             <div>
               <div class="stats mx-2">
-                <p class="my-1 text-base font-extrabold text-center">3/7/39</p>
-                <p><span class="p-1 bg-grey-light">4:57:0</span> KDA</p>
+                <p class="my-1 text-base font-extrabold text-center">{{matchlist[index].participants[player].stats.kills}}/<span class="text-red">{{matchlist[index].participants[player].stats.deaths}}</span>/{{matchlist[index].participants[player].stats.assists}}</p>
+                <p><span class="p-1 bg-grey-light">{{((matchlist[index].participants[player].stats.kills + matchlist[index].participants[player].stats.assists) / matchlist[index].participants[player].stats.deaths).toFixed(2)}}:1</span> KDA</p>
               </div>
             </div>
             <div>
               <div class="stats mr-2">
-                <p class="my-1 text-base font-extrabold text-center">37 CS</p>
-                <p>15K GOLD</p>
+                <p class="my-1 text-base font-extrabold text-center">{{matchlist[index].participants[player].stats.totalMinionsKilled + matchlist[index].participants[player].stats.neutralMinionsKilled }} CS</p>
+                <p>{{(matchlist[index].participants[player].stats.goldEarned / 1000).toFixed(1)}}K GOLD</p>
               </div>
             </div>
             <div>
               <div class="items items-center flex flex-wrap">
-                <img src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3401_martyrsshroud.png" alt="" class="w-10"> <img src="http://raw.communitydragon.org/latest/game/data/items/icons2d/2049_sightstone.png" alt="" class="w-10">
-                <img src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3143_randuins_omen.png" alt="" class="w-10"><img src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3190_crest_of_the_iron_solari.png" alt="" class="w-10">
-                <img
-                  src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3222_mikaels_crucible.png" alt="" class="w-10"><img src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3008_boots_of_swiftness.png" alt="" class="w-10">
+                <img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'" alt="" class="w-10"> <img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'" alt="" class="w-10">
+                <img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'" alt="" class="w-10"><img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'" alt="" class="w-10">
+                <img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'" alt="" class="w-10"><img :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'" alt="" class="w-10">
               </div>
             </div>
-            <img class="ml-1 w-8" src="http://raw.communitydragon.org/latest/game/data/items/icons2d/3351_greaterredtrinket.png" alt="">
-            <!-- My Team -->
-            <div class="matchup flex flex-grow justify-end">
-              <div class="flex flex-col m-2">
-                <div class="flex players items-center">
-                  <img src="https://cdn.communitydragon.org/8.21.1/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
-                </div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
-                </div>
-              </div>
-              <!-- Opponents -->
-              <div class="flex flex-col m-2">
-                <div class="flex players items-center">
-                  <img src="https://cdn.communitydragon.org/8.21.1/champion/Zed/square" alt="" class="w-5 h-full"> <span class="mx-2">Ban Azir</span>
-                </div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Tristana/square" alt="" class="w-5 h-full"> <span class="mx-2">Post Malone</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Swain/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Jensen</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Hecarim/square" alt="" class="w-5 h-full"> <span class="mx-2">C9 Licorice</span></div>
-                <div class="flex players items-center"><img src="https://cdn.communitydragon.org/8.21.1/champion/Thresh/square" alt="" class="w-5 h-full"> <span class="mx-2"><span class="text-bold">Darvec</span></span>
+            <img class="ml-1 w-8" :src="'http://ddragon.leagueoflegends.com/cdn/8.23.1/img/item/'+matchlist[index].participants[player].stats.item6+'.png'" alt="">
+            <div class="matchup flex flex-grow justify-end flex-wrap">
+              <div class="m-2 teamlist">
+                <div :key="id" v-for="(team, id) of matchlist[index].participantIdentities" class="flex players items-center">
+                  <img :src="'https://cdn.communitydragon.org/8.21.1/champion/'+matchlist[index].participants[id].championId+'/square'" alt="" class="w-5 h-full"> <span class="mx-2">{{matchlist[index].participantIdentities[id].player.summonerName}}</span>
                 </div>
               </div>
             </div>
@@ -189,10 +171,16 @@
           </div>
           <div class="stat-footer p-2 bg-grey-lighter flex items-center justify-between">
             <div class="scorefooter">
-              <p><span class="text-green-dark font-bold">Victory</span> at <span class="font-bold">51m 21s</span> in <span class="font-bold">Normal</span></p>
+              <span v-if="matchlist[index].participants[player].stats.win == true">
+                <span class="text-green-dark font-bold">Victory</span>
+              </span>
+              <span v-else>
+                <span class="text-red-dark font-bold">Defeat</span>
+              </span>
+              at <span class="font-bold">{{duration(matchlist[index].gameDuration)}}</span> in <span class="font-bold">Normal</span>
             </div>
             <div class="scorefooter">
-              <p><span class="font-bold">{{time(match.timestamp)}}</span> in <span class="font-bold">Summoner's Rift</span></p>
+             <p><span class="font-bold">{{time(matchlist[index].gameCreation)}}</span> in <span class="font-bold">Summoner's Rift</span></p>
             </div>
           </div>
           </div>
@@ -210,6 +198,30 @@ let tier = {
   iii: '3',
   iv: '4',
   v: '5'
+}
+
+let summoners = {
+  '1': 'SummonerBoost',
+  '3': 'SummonerExhaust',
+  '4': 'SummonerFlash',
+  '6': 'SummonerHaste',
+  '7': 'SummonerHeal',
+  '11': 'SummonerSmite',
+  '12': 'SummonerTeleport',
+  '13': 'SummonerMana',
+  '14': 'SummonerDot',
+  '21': 'SummonerBarrier',
+  '30': 'SummonerPoroRecall',
+  '31': 'SummonerPoroThrow',
+  '32': 'SummonerSnowball',
+  '33': 'SummonerSiegeChampSelect1',
+  '34': 'SummonerSiegeChampSelect2',
+  '35': 'SummonerDarkStarChampSelect1',
+  '36': 'SummonerDarkStarChampSelect2',
+  '39': 'SummonerSnowURFSnowball_Mark',
+  '50': 'SummonerOdysseyRevive',
+  '51': 'SummonerOdysseyGhost',
+  '52': 'SummonerOdysseyFlash'
 }
 
 let champName = {
@@ -392,17 +404,29 @@ export default {
     },
     time: function(time) {
       return moment(time).fromNow()
+    },
+    duration: function(time) {
+      let duration = moment.duration(time, 'seconds')
+      return moment(duration.asMilliseconds()).format('mm:ss')
     }
   },
   computed: {
     masteries() {
-      return this.$store.state.masteries
+      if (this.$store.state.masteries) {
+        return this.$store.state.masteries.slice(0, 3)
+      } else {
+        return []
+      }
     },
     rank() {
       return this.$store.state.rank
     },
     matches() {
-      return this.$store.state.matches.matches
+      if (this.$store.state.matches.matches) {
+        return this.$store.state.matches.matches.slice(0, 5)
+      } else {
+        return []
+      }
     },
     ranktier() {
       return tier
@@ -412,6 +436,22 @@ export default {
     },
     champname() {
       return champName
+    },
+    summonername() {
+      return summoners
+    },
+    summonerid() {
+      return this.$store.state.summoner.id
+    },
+    matchlist() {
+      if (this.$store.state.match) {
+        return this.$store.state.match
+      } else {
+        return []
+      }
+    },
+    participant() {
+      return this.$store.state.participant
     }
   }
 }

@@ -39,7 +39,7 @@
   <div class="darken">
     <div class="flex text-white mx-auto champion p-2 border-b border-solid border-grey-light">
       <div v-if="masteries.length > 1">
-        <div :key="bg" v-for="bg of masteries.slice(0,1)">
+        <div :key="index" v-for="(bg, index) of masteries.slice(0,1)">
         <div :style="{backgroundImage: 'url(https://cdn.communitydragon.org/8.21.1/champion/'+bg.championId+'/splash-art/centered/skin/0)' || 'https://cdn.communitydragon.org/8.21.1/champion/53/splash-art/centered/skin/5'}" class="background"></div>
       </div>
       </div>

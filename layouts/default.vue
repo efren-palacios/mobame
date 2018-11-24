@@ -106,6 +106,17 @@ a {
   opacity: 0.9;
 }
 
+.teamlist {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-flow: column wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 90%;
+  height: 120px;
+}
+
 .background {
   /* background-image: url('https://cdn.communitydragon.org/8.16.1/champion/Poppy/splash-art/centered/skin/0'); */
   background-position: center 25%;
@@ -143,6 +154,14 @@ a {
 
 .win {
   border-left: 3px solid limegreen;
+}
+
+.loss {
+  border-left: 3px solid red;
+}
+
+.remake {
+  border-left: 3px solid gray;
 }
 
 .items {

@@ -6,7 +6,9 @@ const createStore = () => {
       summoner: [],
       rank: [],
       masteries: [],
-      matches: []
+      matches: [],
+      match: [],
+      participant: []
     },
     mutations: {
       add(state, payload) {
@@ -20,6 +22,12 @@ const createStore = () => {
       },
       addmatches(state, payload) {
         state.matches = payload
+      },
+      addmatch(state, payload) {
+        state.match.push(payload)
+      },
+      addparticipant(state, payload) {
+        state.participant.push(payload)
       }
     }
   })
