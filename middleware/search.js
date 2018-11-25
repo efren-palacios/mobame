@@ -16,6 +16,8 @@ export default function({ params, store }) {
 
   async function getSummoner() {
     try {
+      let matchlist = []
+      let partlist = []
       const summoner = await axios.get(`/riot-api/na1/${params.id}`)
       store.commit('add', summoner.data)
       const rank = await axios.get(`/riot-api/na1/${summoner.data.id}/rank`)
@@ -31,13 +33,15 @@ export default function({ params, store }) {
       matches.data.matches.slice(0, 5).forEach(r => {
         let match = axios.get(`/riot-api/na1/matches/${r.gameId}`)
         match.then(r => {
-          store.commit('addmatch', r.data)
+          matchlist.push(r.data)
+          store.commit('addmatch', matchlist)
           let player = r.data.participantIdentities.findIndex(function(
             participant
           ) {
             return participant.player.summonerId == summoner.data.id
           })
-          store.commit('addparticipant', player)
+          partlist.push(player)
+          store.commit('addparticipant', partlist)
         })
       })
     } catch (error) {

@@ -444,11 +444,7 @@ export default {
       return this.$store.state.summoner.id
     },
     matchlist() {
-      if (this.$store.state.match) {
-        return this.$store.state.match
-      } else {
-        return []
-      }
+      return this.$store.state.match
     },
     participant() {
       return this.$store.state.participant

@@ -24,10 +24,10 @@ const createStore = () => {
         state.matches = payload
       },
       addmatch(state, payload) {
-        state.match.push(payload)
+        state.match = payload
       },
       addparticipant(state, payload) {
-        state.participant.push(payload)
+        state.participant = payload
       }
     }
   })
