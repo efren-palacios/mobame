@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const base = 'gh-pages' === process.env.NODE_ENV ? '/' : '/'
+const base = 'gh-pages' === process.env.NODE_ENV ? '/mobame/' : '/'
 
 module.exports = {
   mode: 'universal',
@@ -72,7 +72,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    publicPath: '/',
+    publicPath: '/mobame',
     /*
     ** You can extend webpack config here
     */
