@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const base = 'gh-pages' === process.env.NODE_ENV ? '/mobame/' : '/'
+const base = 'gh-pages' === process.env.NODE_ENV ? '/' : '/'
 
 module.exports = {
   mode: 'universal',
@@ -65,14 +65,14 @@ module.exports = {
 
   server: {
     port: 8000,
-    host: '172.31.82.183'
+    host: '52.91.225.80'
   },
 
   /*
   ** Build configuration
   */
   build: {
-    publicPath: '/mobame',
+    publicPath: '/',
     /*
     ** You can extend webpack config here
     */
