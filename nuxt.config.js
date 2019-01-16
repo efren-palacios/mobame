@@ -65,7 +65,7 @@ module.exports = {
 
   server: {
     port: 8000,
-    host: '172.31.82.183'
+    host: '52.91.225.80'
   },
 
   /*
