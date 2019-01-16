@@ -29,7 +29,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/summoner/v3/summoners/by-name/${summoner}`,
+        url: `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}`,
         headers: {
           'X-Riot-Token': key
         }
@@ -48,7 +48,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/league/v3/positions/by-summoner/${summoner}`,
+        url: `https://${region}.api.riotgames.com/lol/league/v4/positions/by-summoner/${summoner}`,
         headers: {
           'X-Riot-Token': key
         }
@@ -68,7 +68,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/${summoner}`,
+        url: `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summoner}`,
         headers: {
           'X-Riot-Token': key
         }
@@ -87,7 +87,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/match/v3/matchlists/by-account/${summoner}`,
+        url: `https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${summoner}`,
         headers: {
           'X-Riot-Token': key
         }
@@ -106,7 +106,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/match/v3/matches/${match}`,
+        url: `https://${region}.api.riotgames.com/lol/match/v4/matches/${match}`,
         headers: {
           'X-Riot-Token': key
         }

@@ -12,7 +12,11 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint-autofix": "eslint --ext .js,.vue src test --fix",
     "precommit": "npm run lint",
-    "format": "prettier"
+    "format": "prettier",
+    "predeploy": "yarn install; npm-run-all predeploy:*",
+    "predeploy:generate": "cross-env NODE_ENV=gh-pages nuxt generate",
+    "predeploy:fallback": "ncp ./dist/index.html ./dist/404.html",
+    "deploy": "gh-pages -d ./dist -b gh-pages -m \"Github Pages $(date +%Y-%m-%d) deployment\""
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
@@ -25,6 +29,10 @@
     "vue-chartjs": "^3.4.0"
   },
   "devDependencies": {
+    "cross-env": "5.0.5",
+    "gh-pages": "1.0.0",
+    "ncp": "2.0.0",
+    "npm-run-all": "4.0.2",
     "nodemon": "^1.11.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.0.1",
@@ -35,5 +43,6 @@
     "prettier": "1.14.3",
     "autoprefixer": "^8.6.4",
     "tailwindcss": "~0.6.6"
-  }
+  },
+  "homepage": "https://orctamer.github.io/mobame"
 }
