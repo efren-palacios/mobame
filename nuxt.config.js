@@ -63,6 +63,11 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  server: {
+    port: 8000,
+    host: '172.31.82.183'
+  },
+
   /*
   ** Build configuration
   */
