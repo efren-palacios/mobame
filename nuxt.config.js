@@ -67,7 +67,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    publicPath: '/mobame/',
+    publicPath: '/mobame',
     /*
     ** You can extend webpack config here
     */
