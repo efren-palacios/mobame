@@ -37,7 +37,6 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/css/tailwind.css'],
 
   /*
   ** Plugins to load before mounting the App
@@ -65,7 +64,7 @@ module.exports = {
 
   server: {
     port: 8000,
-    host: '172.31.82.183'
+    host: 'localhost'
   },
 
   /*

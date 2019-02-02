@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 <section class="bg-black font-sans">
   <div class="container mx-auto flex items-center py-3">
     <div class="sm:w-1/3 md:auto lg:auto font-hairline">
@@ -30,7 +30,12 @@
     </div>
     </div>
 </section>
+</template> -->
+
+<template>
+  <div></div>
 </template>
+
 
 <script>
 export default {
