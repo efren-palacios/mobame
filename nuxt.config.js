@@ -64,7 +64,7 @@ module.exports = {
 
   server: {
     port: 8000,
-    host: 'localhost'
+    host: '172.31.82.183'
   },
 
   /*
