@@ -408,12 +408,74 @@
               v-for="(team, id) of matchlist[index].participantIdentities"
               class="teamlist"
             >
-              <img
-                :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[id].championId+'/square'"
-                alt
-                class="match-champs"
-              >
-              <span class="mx-2">{{matchlist[index].participantIdentities[id].player.summonerName}}</span>
+              <div class="champ-level">
+                <img
+                  :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[id].championId+'/square'"
+                  alt
+                  class="match-champs"
+                >
+                <div class="level">{{matchlist[index].participants[id].stats.champLevel}}</div>
+              </div>
+
+              <div class="match-summoners">
+                <img
+                  class="match-team-icon"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell1Id]+'.png'"
+                  alt
+                >
+                <img
+                  class="match-team-icon"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell2Id]+'.png'"
+                  alt
+                >
+                <img
+                  class="match-team-icon"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item6+'.png'"
+                  alt
+                >
+              </div>
+              <div class="match-summoners">
+                <img
+                  class="match-team-icon"
+                  :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[id].stats.perkPrimaryStyle+'.png'"
+                  alt
+                >
+                <img
+                  class="match-team-icon"
+                  :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[id].stats.perkSubStyle+'.png'"
+                  alt
+                >
+              </div>
+              <div class="team-summary">
+                <p>{{matchlist[index].participantIdentities[id].player.summonerName}}</p>
+                <p>{{matchlist[index].participants[id].stats.kills}}/{{matchlist[index].participants[id].stats.deaths}}/{{matchlist[index].participants[id].stats.assists}}</p>
+              </div>
+              <div class="team-items">
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item0+'.png'"
+                  alt
+                >
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item1+'.png'"
+                  alt
+                >
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item2+'.png'"
+                  alt
+                >
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item3+'.png'"
+                  alt
+                >
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item4+'.png'"
+                  alt
+                >
+                <img
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item5+'.png'"
+                  alt
+                >
+              </div>
             </div>
           </div>
 
@@ -1181,11 +1243,15 @@ section {
   }
   .match-card-victory-menu {
     background-color: #0e1727;
-    padding-left: 1em;
   }
   .match-card-defeat-menu {
     background-color: #250e17;
-    padding-left: 1em;
+  }
+  .teamlist:nth-child(odd) {
+    background-color: rgba(165, 63, 102, 0.15);
+  }
+  .teamlist:nth-child(5) {
+    border-bottom: 20px solid #111111;
   }
   .match-card-defeat {
     border-left: 4px solid #ff4e50;
@@ -1199,6 +1265,15 @@ section {
     text-align: center;
     margin: 0 auto;
     line-height: 1.5em;
+  }
+  .team-summary {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    line-height: 1.5em;
+    flex-basis: 90px;
   }
   .match-ending {
     font-weight: bold;
@@ -1232,10 +1307,17 @@ section {
   .match-summoners {
     display: flex;
     flex-direction: column;
-    width: 15px;
+  }
+  .team-summoner > img {
+    width: 20px;
+    margin: 1px 0;
   }
   .match-summoner-icon {
     width: 1.5rem;
+    margin: 1px 0;
+  }
+  .match-team-icon {
+    width: 1rem;
     margin: 1px 0;
   }
   .match-items {
@@ -1315,10 +1397,9 @@ section {
     flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
-    height: 150px;
+    height: 100%;
     justify-content: center;
     justify-items: center;
-    padding: 0.5em 1em;
   }
   .match-champs {
     width: 2em;
@@ -1327,6 +1408,38 @@ section {
   }
   .teamlist {
     display: flex;
+    align-items: center;
+    padding-left: 1em;
+  }
+  .champ-level {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .level {
+    position: relative;
+    right: 30px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    line-height: 20px;
+    text-align: center;
+  }
+  .team-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1em;
+  }
+  .team-items > img {
+    width: 1.75rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 2px;
+    height: 2.5em;
+    border-radius: 5px;
   }
 }
 </style>
