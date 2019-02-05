@@ -112,7 +112,7 @@
 </template> -->
 
 <template>
-  <div class="app">
+  <div v-cloak class="app">
     <section class="bg-black">
       <div class="navbar">
         <div class="logo">
@@ -138,6 +138,7 @@
         </div>
       </div>
     </section>
+
     <section>
       <div class="champion">
         <div class="profile">
@@ -212,17 +213,28 @@
           >
             <div class="rank-group">
               <div class="rank-data">
-                <div class="rank-name">{{datarankname[data.queueType]}}</div>
-                <div class="rank-division rank-position">{{data.position.toLowerCase()}}</div>
-                <div class="rank-emblem">
+                <div>
                   <img
-                    :src="'http://opgg-static.akamaized.net/images/medals/' + data.tier.toLowerCase() + '_' + dataranktier[data.rank.toLowerCase()] + '.png'"
+                    class="rank-role"
+                    :src="'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/ranked/positions/rankposition_' + data.tier.toLowerCase() + '-' + emblem[data.position.toLowerCase()] + '_lg.png'"
                     alt
                     srcset
                   >
                 </div>
+                <div class="rank-name">{{datarankname[data.queueType]}}</div>
+                <div
+                  :class="'rank-' + data.tier.toLowerCase()"
+                  class="rank-division rank-position"
+                >{{data.position.toLowerCase()}}</div>
               </div>
               <div class="rank-data">
+                <div class="rank-emblem">
+                  <img
+                    :src="'https://u.gg/assets/lol/ranks/s9_ranks/large/' + data.tier.toLowerCase() + '-' + dataranktier[data.rank.toLowerCase()] + '.png'"
+                    alt
+                    srcset
+                  >
+                </div>
                 <div class="rank-ratio">
                   {{data.wins}}W
                   <span class="darken">/</span>
@@ -290,13 +302,9 @@
                   :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[player].championId+'/square'"
                   alt
                 >
-                <p>
-                  {{championName(matchlist[index].participants[player].championId)}}
-                  <br>
-                  Level {{matchlist[index].participants[player].stats.champLevel}}
-                  <br>
-                  {{matchlist[index].participants[player].stats.kills}}/{{matchlist[index].participants[player].stats.deaths}}/{{matchlist[index].participants[player].stats.assists}}
-                </p>
+                <p>{{championName(matchlist[index].participants[player].championId)}}</p>
+                <p>Level {{matchlist[index].participants[player].stats.champLevel}}</p>
+                <p>{{matchlist[index].participants[player].stats.kills}}/{{matchlist[index].participants[player].stats.deaths}}/{{matchlist[index].participants[player].stats.assists}}</p>
               </div>
             </div>
             <div class="match-summary">
@@ -404,6 +412,9 @@ export default {
       search: ''
     }
   },
+  mounted: function() {
+    this.$mount('.app')
+  },
   methods: {
     championName: function(name) {
       return this.champname[name]
@@ -440,6 +451,9 @@ export default {
     },
     dataranktier() {
       return tier
+    },
+    emblem() {
+      return emblem
     },
     datarankname() {
       return rankName
@@ -487,6 +501,15 @@ let tier = {
   iii: '3',
   iv: '4',
   v: '5'
+}
+
+let emblem = {
+  utility: 'support',
+  middle: 'mid',
+  bottom: 'bot',
+  jungle: 'jungle',
+  top: 'top',
+  apex: 'mid'
 }
 
 let summoners = {
@@ -783,6 +806,9 @@ let queueName = {
 </script>
 
 <style>
+[v-cloak] > * {
+  display: none;
+}
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
@@ -1134,6 +1160,8 @@ section {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin: 0 auto;
+    line-height: 1.5em;
   }
   .match-ending {
     font-weight: bold;
@@ -1146,15 +1174,16 @@ section {
   }
   .match-champ {
     width: 2rem;
-    border-radius: 50%;
+    border-radius: 5px;
   }
   .match-champ-stats {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
-  .match-champ-stats > img {
-    margin-right: 0.5rem;
+  .match-champ-stats > p {
+    line-height: 1.5em;
   }
   .match-role {
     width: 1.5rem;
@@ -1183,6 +1212,9 @@ section {
     align-items: center;
     align-content: center;
     margin: 1px;
+    width: 1.8rem;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
   .match-slots {
     display: flex;
@@ -1237,6 +1269,9 @@ section {
   }
   .rank-iron {
     color: rgb(206, 186, 165);
+  }
+  .rank-role {
+    width: 5em;
   }
 }
 </style>
