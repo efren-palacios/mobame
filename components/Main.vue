@@ -291,8 +291,9 @@
                 class="match-ending match-victory"
               >VICTORY</p>
               <p v-else class="match-ending match-defeat">DEFEAT</p>
-              <div>{{duration(matchlist[index].gameDuration)}}</div>
               <div class="rank-queue">{{dataqueuename[matchlist[index].queueId]}}</div>
+              <div>{{duration(matchlist[index].gameDuration)}}</div>
+              <div>{{time(matchlist[index].gameCreation)}}</div>
             </div>
 
             <div class="match-summary">
@@ -390,10 +391,32 @@
                 >
               </div>
             </div>
-            <div class="match-summary match-menu">
+            <div
+              @click="toggle == index ? toggle = -1 : toggle = index"
+              class="match-summary match-menu"
+            >
               <i class="fas fa-bars"></i>
             </div>
           </div>
+          <div
+            v-show="index == toggle"
+            :class="{'match-card-victory-menu': matchlist[index].participants[player].stats.win == true, 'match-card-defeat-menu': matchlist[index].participants[player].stats.win == false}"
+            class="match-card match-players"
+          >
+            <div
+              :key="id"
+              v-for="(team, id) of matchlist[index].participantIdentities"
+              class="teamlist"
+            >
+              <img
+                :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[id].championId+'/square'"
+                alt
+                class="match-champs"
+              >
+              <span class="mx-2">{{matchlist[index].participantIdentities[id].player.summonerName}}</span>
+            </div>
+          </div>
+
           <!-- end of match -->
         </div>
       </div>
@@ -409,7 +432,8 @@ import moment from 'moment'
 export default {
   data() {
     return {
-      search: ''
+      search: '',
+      toggle: -1
     }
   },
   mounted: function() {
@@ -420,7 +444,7 @@ export default {
       return this.champname[name]
     },
     time: function(time) {
-      return moment(time).fromNow()
+      return moment(time).format('MMM Do')
     },
     duration: function(time) {
       let duration = moment.duration(time, 'seconds')
@@ -809,6 +833,11 @@ let queueName = {
 [v-cloak] > * {
   display: none;
 }
+
+.cloak {
+  display: none;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
@@ -1150,6 +1179,14 @@ section {
     border-left: 4px solid #4e77ff;
     background-color: #192845;
   }
+  .match-card-victory-menu {
+    background-color: #0e1727;
+    padding-left: 1em;
+  }
+  .match-card-defeat-menu {
+    background-color: #250e17;
+    padding-left: 1em;
+  }
   .match-card-defeat {
     border-left: 4px solid #ff4e50;
     background-color: #45192b;
@@ -1272,6 +1309,24 @@ section {
   }
   .rank-role {
     width: 5em;
+  }
+  .match-players {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 150px;
+    justify-content: center;
+    justify-items: center;
+    padding: 0.5em 1em;
+  }
+  .match-champs {
+    width: 2em;
+    height: 100%;
+    margin: 2px;
+  }
+  .teamlist {
+    display: flex;
   }
 }
 </style>
