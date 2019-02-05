@@ -82,6 +82,3 @@ dist
 .idea
 
 # Server
-
-server
-server/index.js
