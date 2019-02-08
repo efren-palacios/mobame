@@ -138,8 +138,23 @@
         </div>
       </div>
     </section>
-
-    <section>
+    <section v-show="!name">
+      <div
+        style="align-items: center;height: 100vh;justify-content: center;background-color: rgb(29, 34, 39);color: rgb(200, 200, 200);display: flex;flex-direction: column;"
+      >
+        <img
+          src="https://vignette4.wikia.nocookie.net/leagueoflegends/images/1/1b/Does_Not_Compute_Emote.png"
+          alt
+        >
+        <h5>
+          Oops! Summoner
+          <strong
+            style="color: rgb(39, 121, 189);text-shadow: 1px 2px 1px rgba(0,0,0,.2);"
+          >{{this.$route.params.id}}</strong> not found
+        </h5>
+      </div>
+    </section>
+    <section class="fullscreen" v-show="name">
       <div class="champion">
         <div class="profile">
           <div v-if="masteries.length > 1">
@@ -276,11 +291,7 @@
             <i class="far fa-keyboard"></i> Match History
           </div>
         </div>
-        <div
-          :key="index"
-          v-for="(player, index) of participant"
-          class="container text-black bg-white"
-        >
+        <div :key="index" v-for="(player, index) of participant">
           <div
             :class="{'match-card-victory': matchlist[index].participants[player].stats.win == true, 'match-card-defeat': matchlist[index].participants[player].stats.win == false}"
             class="match-card"
@@ -303,7 +314,9 @@
                   :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[player].championId+'/square'"
                   alt
                 >
-                <p>{{championName(matchlist[index].participants[player].championId)}}</p>
+                <p>
+                  <strong>{{championName(matchlist[index].participants[player].championId)}}</strong>
+                </p>
                 <p>Level {{matchlist[index].participants[player].stats.champLevel}}</p>
                 <p>{{matchlist[index].participants[player].stats.kills}}/{{matchlist[index].participants[player].stats.deaths}}/{{matchlist[index].participants[player].stats.assists}}</p>
               </div>
@@ -447,7 +460,9 @@
                 >
               </div>
               <div class="team-summary">
-                <p>{{matchlist[index].participantIdentities[id].player.summonerName}}</p>
+                <p>
+                  <strong>{{matchlist[index].participantIdentities[id].player.summonerName}}</strong>
+                </p>
                 <p>{{matchlist[index].participants[id].stats.kills}}/{{matchlist[index].participants[id].stats.deaths}}/{{matchlist[index].participants[id].stats.assists}}</p>
               </div>
               <div class="team-items">
@@ -483,6 +498,15 @@
         </div>
       </div>
     </section>
+    <section class="bg-black">
+      <div class="navbar footer">
+        <p>
+          MOBA
+          <span class="blue">ME</span> concept site created by
+          <span class="blue">Efren Palacios</span> (Effy) &copy; 2019
+        </p>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -490,7 +514,6 @@
 
 <script>
 import moment from 'moment'
-
 export default {
   data() {
     return {
@@ -892,14 +915,6 @@ let queueName = {
 </script>
 
 <style>
-[v-cloak] > * {
-  display: none;
-}
-
-.cloak {
-  display: none;
-}
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
@@ -1028,6 +1043,21 @@ section {
   flex-direction: column;
 }
 
+.app {
+  background-color: rgb(29, 34, 39);
+}
+
+.footer {
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.fullscreen {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .bg-black {
   background-color: #22292f;
   width: auto;
@@ -1039,16 +1069,424 @@ section {
 }
 
 .logo {
-  width: 33.3%;
+  width: 100%;
   font-weight: 100;
   text-align: center;
   font-size: 1.25rem;
   color: white;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blue {
   color: #72a0d9;
+}
+
+.search-bar {
+  background-color: #3d4852;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  font-size: 12px;
+  height: 20px;
+  padding: 0.5rem 3.5rem 0.5rem 1.5rem;
+  color: white;
+}
+
+.search-button {
+  padding: 0.5rem 1.2rem;
+  color: #fff;
+}
+
+.search-button {
+  background-color: #2779bd;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 12px;
+  height: auto;
+}
+
+.form-container {
+  margin: 0 1.25rem;
+}
+
+.form-flex {
+  display: flex;
+}
+
+.champion {
+  position: relative;
+  background-size: cover;
+  background-position-y: 510px;
+  opacity: 0.9;
+  width: 100%;
+  background-color: black;
+  margin-top: 2em;
+}
+.profile {
+  display: flex;
+  margin: 0 auto;
+}
+.summoner-icon {
+  width: 12.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 4px solid white;
+}
+.summoner-profile {
+  margin: 2.5em;
+  display: flex;
+}
+.background {
+  background-position: center 25%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.35;
+}
+.summoner-name {
+  text-shadow: 1px 1px 2px black;
+  letter-spacing: 0.05em;
+  font-size: 2.5rem;
+  color: white;
+  white-space: nowrap;
+}
+.summoner-info {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.summoner-stats {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.summoner-social {
+  justify-content: space-evenly;
+  display: flex;
+  margin: 0.5rem 0;
+}
+.streaming,
+.online-status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.125rem;
+  background-color: #9561e2;
+  color: white;
+  font-size: 14px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.online-status {
+  background-color: #38c172;
+  margin-right: 0.5rem;
+}
+.rank-container {
+  background-color: #ddd;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+}
+.rank-group {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 0.5em;
+}
+
+.summoner-verification {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.rank-summary {
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: #22292f;
+}
+.rank-stats {
+  background-color: #3d4852;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: 18px;
+  flex-direction: column;
+}
+.rank-emblem > img {
+  width: 7em;
+}
+.rank-division {
+  font-size: 24px;
+  color: #6abbff;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+  text-transform: capitalize;
+  font-variant: small-caps;
+}
+.rank-lp {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.5em;
+  text-shadow: 1px 1px 3px black;
+}
+.darken {
+  color: rgba(255, 255, 255, 0.25);
+}
+.text-green {
+  color: #38c172;
+}
+
+.flex-center {
+  align-self: center;
+}
+.rank-icon > img {
+  width: 5.5em;
+  margin: 0 0.5em;
+}
+.rank-queue {
+  text-align: center;
+  width: 50px;
+}
+.rank-name {
+  font-size: 12px;
+}
+.rank-master {
+  color: rgb(199, 109, 215);
+}
+.rank-diamond {
+  color: rgb(92, 111, 197);
+}
+.rank-gold {
+  color: rgb(214, 195, 126);
+}
+.rank-grandmaster {
+  color: rgb(235, 19, 71);
+}
+.rank-platinum {
+  color: rgb(125, 213, 163);
+}
+.rank-silver {
+  color: rgb(232, 232, 232);
+}
+.rank-bronze {
+  color: rgb(196, 140, 77);
+}
+.rank-iron {
+  color: rgb(206, 186, 165);
+}
+.rank-role {
+  width: 5em;
+}
+
+.rank-data {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.rank-champ {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0;
+}
+
+.match-card {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.match-card-victory {
+  border-left: 4px solid #4e77ff;
+  background-color: #192845;
+}
+.match-card-victory-menu {
+  background-color: #0e1727;
+}
+.match-card-defeat-menu {
+  background-color: #250e17;
+}
+.teamlist:nth-child(odd) {
+  background-color: rgba(165, 63, 102, 0.15);
+}
+
+.match-card-defeat {
+  border-left: 4px solid #ff4e50;
+  background-color: #45192b;
+}
+.match-summary {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.5em;
+}
+.team-summary {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  line-height: 1.5em;
+  flex-basis: 90px;
+  min-width: 0;
+}
+.team-summary > p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.match-ending {
+  font-weight: bold;
+}
+.match-defeat {
+  color: #ff4e50;
+}
+.match-victory {
+  color: #4e77ff;
+}
+.match-champ {
+  width: 4rem;
+  border-radius: 5px;
+}
+.match-champ-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.match-champ-stats > p {
+  line-height: 1.5em;
+}
+.match-role {
+  width: 1.5rem;
+}
+.match-score {
+  display: flex;
+  flex-direction: column;
+}
+.match-summoners {
+  display: flex;
+  flex-direction: column;
+}
+.team-summoner > img {
+  width: 20px;
+  margin: 1px 0;
+}
+.match-summoner-icon {
+  width: 2.5rem;
+  margin: 3px 0;
+}
+.match-team-icon {
+  width: 1.5rem;
+  margin: 1px 0;
+}
+.match-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.match-items > img {
+  height: 4rem;
+  align-items: center;
+  align-content: center;
+  margin: 1px;
+  width: 4rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.match-slots {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.match-menu {
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 0 0 auto;
+}
+
+.match-menu > i {
+  padding: 0.5em;
+}
+.flex-center {
+  align-self: center;
+}
+.match-players {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.match-champs {
+  width: 4em;
+  margin: 2px;
+}
+.teamlist {
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+  width: 49%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.champ-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.level {
+  position: relative;
+  right: 14px;
+  top: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  line-height: 20px;
+  text-align: center;
+}
+.team-items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1em;
+}
+.team-items > img {
+  width: 2.75rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 2px;
+  height: 2.75rem;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .teamlist {
+    width: 48.7%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .teamlist {
+    width: 48.6%;
+  }
+  .match-players {
+    display: flex;
+    justify-content: center;
+  }
+  .team-items > img {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -1057,7 +1495,7 @@ section {
   }
   .logo {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 0 0 0.8em;
     align-items: center;
     width: 100%;
@@ -1086,7 +1524,7 @@ section {
   }
 
   .form-container {
-    margin: 0 1.25rem 0 0;
+    margin: 0 10px;
   }
 
   .form-flex {
@@ -1127,10 +1565,11 @@ section {
   .summoner-name {
     text-shadow: 1px 1px 2px black;
     letter-spacing: 0.05em;
-    font-size: 3rem;
+    font-size: calc(30vw / 2.8);
     margin: 1rem 0;
     color: white;
     text-align: center;
+    white-space: nowrap;
   }
   .summoner-info {
     display: flex;
@@ -1169,7 +1608,6 @@ section {
   .rank-group {
     display: flex;
     background-color: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0.5em;
   }
   .rank-group:nth-child(odd) {
@@ -1271,9 +1709,14 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
     line-height: 1.5em;
     flex-basis: 90px;
+    min-width: 0;
+  }
+  .team-summary > p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .match-ending {
     font-weight: bold;
@@ -1389,6 +1832,9 @@ section {
   .rank-iron {
     color: rgb(206, 186, 165);
   }
+  .rank-grandmaster {
+    color: rgb(235, 19, 71);
+  }
   .rank-role {
     width: 5em;
   }
@@ -1410,6 +1856,7 @@ section {
     display: flex;
     align-items: center;
     padding-left: 1em;
+    width: 100%;
   }
   .champ-level {
     display: flex;
