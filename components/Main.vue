@@ -1856,7 +1856,7 @@ section {
     display: flex;
     align-items: center;
     padding-left: 1em;
-    width: 100%;
+    width: 97%;
   }
   .champ-level {
     display: flex;
