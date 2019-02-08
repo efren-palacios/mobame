@@ -2,7 +2,7 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-const host = process.env.HOST || '172.31.82.183' //'172.31.82.183'
+const host = process.env.HOST || '157.230.156.112' //'172.31.82.183'
 const port = process.env.PORT || 8000
 const axios = require('axios')
 app.set('port', port)

@@ -991,7 +991,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 12px;
   line-height: 24px;
-  min-width: 960px;
+  min-width: 0;
 }
 
 h1 {
@@ -1328,6 +1328,30 @@ section {
   text-align: center;
   margin: 0 auto;
   line-height: 1.5em;
+}
+.match-summary:nth-child(5) {
+  flex: 4;
+  align-items: center;
+}
+
+.match-summary {
+  flex: 1;
+}
+
+.match-summoner-icon {
+  margin: auto;
+}
+
+.rank-queue {
+  margin: 0 auto;
+}
+
+.match-items {
+  justify-content: center;
+}
+
+.match-summary:nth-child(2) {
+  flex: 2;
 }
 .team-summary {
   padding: 5px;
