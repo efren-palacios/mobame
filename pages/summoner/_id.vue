@@ -489,7 +489,7 @@ export default {
   async asyncData({ params, error, redirect }) {
     let matchlist = []
     let partlist = []
-    let server = 'https://effy.moe/'
+    let server = 'https://effy.moe'
     try {
       let summoner = await axios.get(
         `${server}/riot-api/na1/${encodeURIComponent(params.id)}`
