@@ -522,6 +522,7 @@ export default {
         partlist: partlist
       }
     } catch (error) {
+      console.log(error)
       return redirect('/')
     }
   },
