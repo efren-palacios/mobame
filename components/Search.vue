@@ -232,7 +232,7 @@ export default {
   },
   methods: {
     submit(event) {
-      this.$router.push(`/summoner/${this.search}`)
+      this.$router.push(`./summoner/${this.search}`)
     }
   }
 }

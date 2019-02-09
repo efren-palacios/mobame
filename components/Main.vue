@@ -514,7 +514,11 @@
 
 <script>
 import moment from 'moment'
+import id from '~/pages/summoner/_id.vue'
 export default {
+  components: {
+    id
+  },
   data() {
     return {
       search: '',
@@ -577,7 +581,7 @@ export default {
       return summoners
     },
     summonerid() {
-      return this.$store.state.summoner.id
+      return this.$summoner.id
     },
     matchlist() {
       if (this.$store.state.match) {
@@ -588,18 +592,6 @@ export default {
     },
     participant() {
       return this.$store.state.participant
-    },
-    summonertime() {
-      return moment(this.$store.state.summoner.revisionDate).fromNow()
-    },
-    level() {
-      return this.$store.state.summoner.summonerLevel
-    },
-    name() {
-      return this.$store.state.summoner.name
-    },
-    icon() {
-      return this.$store.state.summoner.profileIconId
     }
   }
 }

@@ -23,7 +23,7 @@ async function start() {
 
   app.get('/riot-api/:region/:summoner', async (req, res) => {
     const region = req.params.region
-    const summoner = req.params.summoner
+    const summoner = encodeURIComponent(req.params.summoner)
     res.contentType('json')
     try {
       const { data } = await axios({
@@ -42,7 +42,7 @@ async function start() {
   })
   app.get('/riot-api/:region/:summoner/rank', async (req, res) => {
     const region = req.params.region
-    const summoner = req.params.summoner
+    const summoner = encodeURIComponent(req.params.summoner)
     res.contentType('json')
     try {
       const { data } = await axios({
@@ -62,7 +62,7 @@ async function start() {
 
   app.get('/riot-api/:region/:summoner/masteries', async (req, res) => {
     const region = req.params.region
-    const summoner = req.params.summoner
+    const summoner = encodeURIComponent(req.params.summoner)
     res.contentType('json')
     try {
       const { data } = await axios({
@@ -81,7 +81,7 @@ async function start() {
   })
   app.get('/riot-api/:region/:summoner/matches', async (req, res) => {
     const region = req.params.region
-    const summoner = req.params.summoner
+    const summoner = encodeURIComponent(req.params.summoner)
     res.contentType('json')
     try {
       const { data } = await axios({
