@@ -55,7 +55,7 @@
           <div class="summoner-profile">
             <div class="flex-center">
               <img
-                :src="'https://opgg-static.akamaized.net/images/profile_icons/profileIcon' + icon + '.jpg' "
+                :src="'https://cdn.communitydragon.org/9.1.1/profile-icon/'+icon"
                 alt
                 class="summoner-icon"
               >
@@ -534,9 +534,9 @@ export default {
         {
           rel: 'icon',
           type: 'image/png',
-          href: `https://opgg-static.akamaized.net/images/profile_icons/profileIcon/${
+          href: `https://cdn.communitydragon.org/9.1.1/profile-icon/${
             this.summoner.profileIconId
-          }.png`
+          }`
         }
       ]
     }
@@ -1111,14 +1111,16 @@ section {
 }
 .summoner-stats {
   display: flex;
-  justify-content: space-around;
   color: white;
   text-shadow: 1px 1px 2px black;
+  margin-top: 1.5rem;
 }
 .summoner-social {
-  justify-content: space-evenly;
   display: flex;
   margin: 0.5rem 0;
+}
+.summoner-region {
+  margin-right: 1.5rem;
 }
 .streaming,
 .online-status {
