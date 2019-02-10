@@ -489,7 +489,7 @@ export default {
   async asyncData({ params, error, redirect }) {
     let matchlist = []
     let partlist = []
-    let server = 'https://effy.moe'
+    let server = 'http://localhost:8000'
     try {
       let summoner = await axios.get(
         `${server}/riot-api/na1/${encodeURIComponent(params.id)}`
@@ -503,15 +503,15 @@ export default {
       let matches = await axios.get(
         `${server}/riot-api/na1/${summoner.data.accountId}/matches`
       )
-      matches.data.matches.slice(0, 5).forEach(r => {
-        let match = axios.get(`${server}/riot-api/na1/matches/${r.gameId}`)
-        match.then(r => {
-          matchlist.push(r.data)
-          let player = r.data.participantIdentities.findIndex(participant => {
-            return participant.player.summonerId == summoner.data.id
-          })
-          partlist.push(player)
+      matches.data.matches.slice(0, 5).forEach(async r => {
+        let match = await axios.get(
+          `${server}/riot-api/na1/matches/${r.gameId}`
+        )
+        matchlist.push(match.data)
+        let player = match.data.participantIdentities.findIndex(participant => {
+          return participant.player.summonerId == summoner.data.id
         })
+        partlist.push(player)
       })
       return {
         summoner: summoner.data,
