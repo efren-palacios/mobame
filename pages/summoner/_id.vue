@@ -503,16 +503,20 @@ export default {
       let matches = await axios.get(
         `${server}/riot-api/na1/${summoner.data.accountId}/matches`
       )
-      matches.data.matches.slice(0, 5).forEach(async r => {
-        let match = await axios.get(
-          `${server}/riot-api/na1/matches/${r.gameId}`
-        )
-        matchlist.push(match.data)
-        let player = match.data.participantIdentities.findIndex(participant => {
-          return participant.player.summonerId == summoner.data.id
+      await Promise.all(
+        matches.data.matches.slice(0, 5).map(async r => {
+          let match = await axios.get(
+            `${server}/riot-api/na1/matches/${r.gameId}`
+          )
+          matchlist.push(match.data)
+          let player = match.data.participantIdentities.findIndex(
+            participant => {
+              return participant.player.summonerId == summoner.data.id
+            }
+          )
+          partlist.push(player)
         })
-        partlist.push(player)
-      })
+      )
       return {
         summoner: summoner.data,
         datarank: rank.data,
