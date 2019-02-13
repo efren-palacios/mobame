@@ -984,6 +984,7 @@ body {
   font-size: 12px;
   line-height: 24px;
   min-width: 0;
+  background-color: rgb(29, 34, 39);
 }
 
 h1 {
@@ -1024,10 +1025,6 @@ h6 {
 }
 a {
   color: #f05;
-}
-
-body {
-  background: #ddd;
 }
 
 section {

@@ -1,14 +1,16 @@
 <template>
   <div>
-    <Search/>
+    <Nav/>
   </div>
 </template>
 
 <script>
-import Search from '~/components/Search.vue'
+import Nav from '~/components/Navbar.vue'
+import Main from '~/components/Main.vue'
 export default {
   components: {
-    Search
+    Nav,
+    Main
   }
 }
 </script>

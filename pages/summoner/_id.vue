@@ -1042,10 +1042,6 @@ a {
   color: #f05;
 }
 
-body {
-  background: #ddd;
-}
-
 section {
   display: flex;
   flex-direction: column;
