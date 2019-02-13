@@ -1,5 +1,4 @@
 const pkg = require('./package')
-const base = '/'
 
 module.exports = {
   mode: 'universal',
@@ -66,7 +65,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    publicPath: '/',
     /*
     ** You can extend webpack config here
     */
@@ -84,8 +82,5 @@ module.exports = {
         })
       }
     }
-  },
-  router: {
-    base
   }
 }
