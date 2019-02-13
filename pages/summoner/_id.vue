@@ -212,15 +212,18 @@
               <div class="match-summoners">
                 <img
                   class="match-summoner-icon"
+                  v-tooltip="getSummoners(matchlist[index].participants[player].spell1Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[player].spell1Id]+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getSummoners(matchlist[index].participants[player].spell2Id)"
                   class="match-summoner-icon"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[player].spell2Id]+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[player].stats.item6)"
                   class="match-summoner-icon"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item6+'.png'"
                   alt
@@ -265,30 +268,42 @@
             </div>-->
             <div class="match-summary">
               <div class="match-items">
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'"
-                  alt
-                >
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'"
-                  alt
-                >
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'"
-                  alt
-                >
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'"
-                  alt
-                >
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'"
-                  alt
-                >
-                <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'"
-                  alt
-                >
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item0)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'"
+                    alt
+                  >
+                </a>
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item1)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'"
+                    alt
+                  >
+                </a>
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item2)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'"
+                    alt
+                  >
+                </a>
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item3)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'"
+                    alt
+                  >
+                </a>
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item4)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'"
+                    alt
+                  >
+                </a>
+                <a v-tooltip="getItem(matchlist[index].participants[player].stats.item5)">
+                  <img
+                    :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'"
+                    alt
+                  >
+                </a>
               </div>
             </div>
             <div
@@ -320,16 +335,19 @@
               <div class="match-summoners">
                 <img
                   class="match-team-icon"
+                  v-tooltip="getSummoners(matchlist[index].participants[id].spell1Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell1Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-team-icon"
+                  v-tooltip="getSummoners(matchlist[index].participants[id].spell2Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell2Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-team-icon"
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item6)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item6+'.png'"
                   alt
                 >
@@ -358,26 +376,32 @@
               </div>
               <div class="team-items">
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item0)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item0+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item1)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item1+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item2)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item2+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item3)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item3+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item4)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item4+'.png'"
                   alt
                 >
                 <img
+                  v-tooltip="getItem(matchlist[index].participants[id].stats.item5)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item5+'.png'"
                   alt
                 >
@@ -404,6 +428,13 @@
 <script>
 import axios from 'axios'
 import moment from 'moment'
+import Vue from 'vue'
+import VTooltip from 'v-tooltip'
+let items = require('~/items.json')
+let summonerdata = require('~/summoners.json')
+
+Vue.use(VTooltip)
+
 export default {
   data() {
     return {
@@ -414,7 +445,10 @@ export default {
       datamasteries: {},
       datamatches: {},
       datamatchlist: [],
-      partlist: []
+      partlist: [],
+      items: items,
+      summonerdata: summonerdata,
+      summoners: summoners
     }
   },
   mounted: function() {
@@ -434,6 +468,29 @@ export default {
     submit(event) {
       event.preventDefault()
       this.$router.push(`/summoner/${this.search}`)
+    },
+    getItem(item) {
+      if (item == 0) {
+        return null
+      }
+      return `<strong class="rank-diamond">${
+        this.items.data[item].name
+      }</strong><br />${
+        this.items.data[item].description
+      }<br/><strong class="rank-bronze">Cost: ${
+        this.items.data[item].gold.total
+      } (${this.items.data[item].gold.base})`
+    },
+    getSummoners(item) {
+      console.log(item)
+      console.log(this.summoners[item])
+      if (item == 0) {
+        return null
+      }
+      item = this.summoners[item]
+      return `<strong class="rank-diamond">${
+        this.summonerdata.data[item].name
+      }</strong><br />${this.summonerdata.data[item].description}`
     }
   },
   computed: {
@@ -1363,25 +1420,35 @@ section {
 .match-summoner-icon {
   width: 2.5rem;
   margin: 3px 0;
+  cursor: pointer;
 }
 .match-team-icon {
   width: 1.5rem;
   margin: 1px 0;
+  cursor: pointer;
 }
 .match-items {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-.match-items > img {
+.match-items > a {
   height: 4rem;
   align-items: center;
   align-content: center;
-  margin: 1px;
+  margin: 0 5px;
   width: 4rem;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.match-items > a > img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .match-slots {
   display: flex;
   justify-content: space-around;
@@ -1446,8 +1513,114 @@ section {
   margin: 0 2px;
   height: 2.75rem;
   border-radius: 5px;
+  cursor: pointer;
 }
 
+.tooltip {
+  display: block !important;
+  z-index: 10000;
+}
+
+.tooltip .tooltip-inner {
+  background: black;
+  color: white;
+  border-radius: 16px;
+  padding: 5px 10px 4px;
+}
+
+.tooltip .tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  margin: 5px;
+  border-color: black;
+  z-index: 1;
+}
+
+.tooltip[x-placement^='top'] {
+  margin-bottom: 5px;
+}
+
+.tooltip[x-placement^='top'] .tooltip-arrow {
+  border-width: 5px 5px 0 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tooltip[x-placement^='bottom'] {
+  margin-top: 5px;
+}
+
+.tooltip[x-placement^='bottom'] .tooltip-arrow {
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tooltip[x-placement^='right'] {
+  margin-left: 5px;
+}
+
+.tooltip[x-placement^='right'] .tooltip-arrow {
+  border-width: 5px 5px 5px 0;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tooltip[x-placement^='left'] {
+  margin-right: 5px;
+}
+
+.tooltip[x-placement^='left'] .tooltip-arrow {
+  border-width: 5px 0 5px 5px;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tooltip.popover .popover-inner {
+  background: #f9f9f9;
+  color: black;
+  padding: 24px;
+  border-radius: 5px;
+  box-shadow: 0 5px 30px rgba(black, 0.1);
+}
+
+.tooltip.popover .popover-arrow {
+  border-color: #f9f9f9;
+}
+
+.tooltip[aria-hidden='true'] {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s, visibility 0.15s;
+}
+
+.tooltip[aria-hidden='false'] {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.15s;
+}
 @media only screen and (max-width: 1024px) {
   .teamlist {
     width: 48.7%;

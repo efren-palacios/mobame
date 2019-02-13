@@ -26,6 +26,7 @@
     "express": "^4.16.3",
     "moment": "^2.22.2",
     "nuxt": "^2.0.0",
+    "v-tooltip": "^2.0.0-rc.33",
     "vue-chartjs": "^3.4.0"
   },
   "devDependencies": {
