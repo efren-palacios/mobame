@@ -1919,6 +1919,7 @@ section {
     align-items: center;
     width: 95px;
   }
+  .match-items > a,
   .match-items > a > img {
     height: 1.8rem;
     align-items: center;
