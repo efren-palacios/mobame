@@ -310,7 +310,7 @@
               @click="toggle == index ? toggle = -1 : toggle = index"
               class="match-summary match-menu"
             >
-              <i class="fas fa-bars"></i>
+              <i :class="[toggle == index ? 'fa-caret-up' : 'fa-caret-down', 'fas']"></i>
             </div>
           </div>
           <div
