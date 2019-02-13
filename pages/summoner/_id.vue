@@ -598,6 +598,14 @@ export default {
             this.summoner.profileIconId
           }`
         }
+      ],
+      meta: [
+        {
+          property: 'og:image',
+          content: `https://cdn.communitydragon.org/9.1.1/profile-icon/${
+            this.summoner.profileIconId
+          }`
+        }
       ]
     }
   }
