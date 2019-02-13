@@ -482,8 +482,6 @@ export default {
       } (${this.items.data[item].gold.base})`
     },
     getSummoners(item) {
-      console.log(item)
-      console.log(this.summoners[item])
       if (item == 0) {
         return null
       }
@@ -546,7 +544,7 @@ export default {
   async asyncData({ params, error, redirect }) {
     let matchlist = []
     let partlist = []
-    let server = 'http://localhost:8000'
+    let server = 'http://157.230.163.198'
     try {
       let summoner = await axios.get(
         `${server}/riot-api/na1/${encodeURIComponent(params.id)}`
