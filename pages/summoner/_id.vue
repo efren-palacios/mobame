@@ -544,7 +544,7 @@ export default {
   async asyncData({ params, error, redirect }) {
     let matchlist = []
     let partlist = []
-    let server = 'http://157.230.163.198'
+    let server = 'http://effy.moe' //http://157.230.163.198
     try {
       let summoner = await axios.get(
         `${server}/riot-api/na1/${encodeURIComponent(params.id)}`
