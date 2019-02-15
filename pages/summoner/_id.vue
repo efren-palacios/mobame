@@ -605,6 +605,10 @@ export default {
           content: `https://cdn.communitydragon.org/9.1.1/profile-icon/${
             this.summoner.profileIconId
           }`
+        },
+        {
+          property: 'og:og:description',
+          content: `Rank summary for ${this.summoner.name}`
         }
       ]
     }
