@@ -278,7 +278,7 @@
             <div :key="index" v-bind="masteries" v-for="(champs, index) of masteries">
               <div class="rank-icon">
                 <img
-                  :src="'https://cdn.communitydragon.org/9.1.1/champion/'+champs.championId+'/square' "
+                  :src="'https://cdn.communitydragon.org/9.6.1/champion/'+champs.championId+'/square' "
                   alt
                 >
                 <div>{{championName(champs.championId)}}</div>
@@ -311,7 +311,7 @@
               <div class="match-champ-stats">
                 <img
                   class="match-champ"
-                  :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[player].championId+'/square'"
+                  :src="'https://cdn.communitydragon.org/9.6.1/champion/'+matchlist[index].participants[player].championId+'/square'"
                   alt
                 >
                 <p>
@@ -325,17 +325,17 @@
               <div class="match-summoners">
                 <img
                   class="match-summoner-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[player].spell1Id]+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/spell/'+summonername[matchlist[index].participants[player].spell1Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-summoner-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[player].spell2Id]+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/spell/'+summonername[matchlist[index].participants[player].spell2Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-summoner-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item6+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item6+'.png'"
                   alt
                 >
               </div>
@@ -379,27 +379,27 @@
             <div class="match-summary">
               <div class="match-items">
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'"
                   alt
                 >
               </div>
@@ -423,7 +423,7 @@
             >
               <div class="champ-level">
                 <img
-                  :src="'https://cdn.communitydragon.org/9.1.1/champion/'+matchlist[index].participants[id].championId+'/square'"
+                  :src="'https://cdn.communitydragon.org/9.6.1/champion/'+matchlist[index].participants[id].championId+'/square'"
                   alt
                   class="match-champs"
                 >
@@ -433,17 +433,17 @@
               <div class="match-summoners">
                 <img
                   class="match-team-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell1Id]+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/spell/'+summonername[matchlist[index].participants[id].spell1Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-team-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/'+summonername[matchlist[index].participants[id].spell2Id]+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/spell/'+summonername[matchlist[index].participants[id].spell2Id]+'.png'"
                   alt
                 >
                 <img
                   class="match-team-icon"
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item6+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item6+'.png'"
                   alt
                 >
               </div>
@@ -467,27 +467,27 @@
               </div>
               <div class="team-items">
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item0+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item0+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item1+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item1+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item2+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item2+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item3+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item3+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item4+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item4+'.png'"
                   alt
                 >
                 <img
-                  :src="'http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/'+matchlist[index].participants[id].stats.item5+'.png'"
+                  :src="'http://ddragon.leagueoflegends.com/cdn/9.6.1/img/item/'+matchlist[index].participants[id].stats.item5+'.png'"
                   alt
                 >
               </div>
