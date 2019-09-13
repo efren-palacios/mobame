@@ -116,7 +116,7 @@
             <div class="rank-group">
               <div class="rank-data">
                 <div class="rank-emblem">
-                <div class="rank-name">{{datarankname[data.queueType]}}</div>
+                  <div class="rank-name">{{datarankname[data.queueType]}}</div>
                   <img
                     :src="'https://static.u.gg/assets/lol/ranks/s9_ranks/large/' + data.tier.toLowerCase() + '-' + dataranktier[data.rank] + '.png'"
                     alt
@@ -230,28 +230,6 @@
                 />
               </div>
             </div>
-            <!--           <div class="match-summary">
-            <div>
-              <img
-                class="match-role"
-                src="https://u.gg/assets/lol/roles/jung.svg?v9.1.2"
-                alt=""
-              />
-            </div>
-            <div>
-              <p><b>142</b><span class="darken"> (5.6)</span> CS</p>
-            </div>
-            </div>-->
-            <!--           <div class="match-summary">
-            <div class="match-score">
-              <div>
-                6.50 <span class="darken">KDA</span> <br />
-                <strong>7</strong> <span class="darken">/</span>
-                <strong>2</strong> <span class="darken">/</span>
-                <strong>6</strong>
-              </div>
-            </div>
-            </div>-->
             <div class="match-summary">
               <div class="match-items">
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item0)">
@@ -1291,18 +1269,18 @@ section {
   width: 5em;
 }
 
- .rank-data {
+.rank-data {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
-  padding: .5em;
-} 
+  padding: 0.5em;
+}
 
 .rank-champ {
   display: flex;
   justify-content: space-around;
-  padding: .5em;
+  padding: 0.5em;
   flex: 1;
 }
 
@@ -1764,12 +1742,12 @@ section {
     margin-top: -1px;
     margin-bottom: -1px;
   }
-   .rank-data {
+  .rank-data {
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: center;
-  } 
+  }
   .rank-summary {
     padding: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.125);
