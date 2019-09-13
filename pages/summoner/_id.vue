@@ -16,7 +16,7 @@
                 type="text"
                 value
                 class="search-bar"
-              >
+              />
               <button v-on:click="search" class="search-button">
                 <i class="fas fa-search"></i>
               </button>
@@ -32,7 +32,7 @@
         <img
           src="https://vignette4.wikia.nocookie.net/leagueoflegends/images/1/1b/Does_Not_Compute_Emote.png"
           alt
-        >
+        />
         <h5>
           Oops! Summoner
           <strong
@@ -58,7 +58,7 @@
                 :src="'https://cdn.communitydragon.org/9.18.1/profile-icon/'+icon"
                 alt
                 class="summoner-icon"
-              >
+              />
             </div>
             <div class="summoner-info">
               <div class="summoner-name">{{name}}</div>
@@ -66,12 +66,12 @@
                 <div class="summoner-region">
                   <i class="fas ml-1 fa-globe-americas"></i>
                   <span class="mr-3">North America</span>
-                  <br>
+                  <br />
                 </div>
                 <div class="summoner-level">
                   <i class="fas ml-1 fa-certificate"></i>
                   Level {{level}}
-                  <br>
+                  <br />
                 </div>
               </div>
               <div class="summoner-verification"></div>
@@ -111,31 +111,17 @@
             :key="index"
             v-bind="rank"
             v-for="(data, index) of rank.slice().reverse()"
-            class="flex items-center mx-4"
+            class="rank-group"
           >
             <div class="rank-group">
               <div class="rank-data">
-                <div>
-                  <img
-                    class="rank-role"
-                    :src="'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/ranked/positions/rankposition_' + data.tier.toLowerCase() + '-' + emblem[data.position.toLowerCase()] + '_lg.png'"
-                    alt
-                    srcset
-                  >
-                </div>
-                <div class="rank-name">{{datarankname[data.queueType]}}</div>
-                <div
-                  :class="'rank-' + data.tier.toLowerCase()"
-                  class="rank-division rank-position"
-                >{{data.position.toLowerCase()}}</div>
-              </div>
-              <div class="rank-data">
                 <div class="rank-emblem">
+                <div class="rank-name">{{datarankname[data.queueType]}}</div>
                   <img
-                    :src="'https://u.gg/assets/lol/ranks/s9_ranks/large/' + data.tier.toLowerCase() + '-' + dataranktier[data.rank.toLowerCase()] + '.png'"
+                    :src="'https://static.u.gg/assets/lol/ranks/s9_ranks/large/' + data.tier.toLowerCase() + '-' + dataranktier[data.rank] + '.png'"
                     alt
                     srcset
-                  >
+                  />
                 </div>
                 <div class="rank-ratio">
                   {{data.wins}}W
@@ -167,7 +153,7 @@
                 <img
                   :src="'https://cdn.communitydragon.org/9.18.1/champion/'+champs.championId+'/square' "
                   alt
-                >
+                />
                 <div>{{championName(champs.championId)}}</div>
               </div>
             </div>
@@ -200,7 +186,7 @@
                   class="match-champ"
                   :src="'https://cdn.communitydragon.org/9.18.1/champion/'+matchlist[index].participants[player].championId+'/square'"
                   alt
-                >
+                />
                 <p>
                   <strong>{{championName(matchlist[index].participants[player].championId)}}</strong>
                 </p>
@@ -215,19 +201,19 @@
                   v-tooltip="getSummoners(matchlist[index].participants[player].spell1Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/'+summonername[matchlist[index].participants[player].spell1Id]+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getSummoners(matchlist[index].participants[player].spell2Id)"
                   class="match-summoner-icon"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/'+summonername[matchlist[index].participants[player].spell2Id]+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[player].stats.item6)"
                   class="match-summoner-icon"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item6+'.png'"
                   alt
-                >
+                />
               </div>
             </div>
             <div class="match-summary">
@@ -236,12 +222,12 @@
                   class="match-summoner-icon"
                   :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[player].stats.perkPrimaryStyle+'.png'"
                   alt
-                >
+                />
                 <img
                   class="match-summoner-icon"
                   :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[player].stats.perkSubStyle+'.png'"
                   alt
-                >
+                />
               </div>
             </div>
             <!--           <div class="match-summary">
@@ -272,37 +258,37 @@
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item0+'.png'"
                     alt
-                  >
+                  />
                 </a>
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item1)">
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item1+'.png'"
                     alt
-                  >
+                  />
                 </a>
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item2)">
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item2+'.png'"
                     alt
-                  >
+                  />
                 </a>
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item3)">
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item3+'.png'"
                     alt
-                  >
+                  />
                 </a>
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item4)">
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item4+'.png'"
                     alt
-                  >
+                  />
                 </a>
                 <a v-tooltip="getItem(matchlist[index].participants[player].stats.item5)">
                   <img
                     :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[player].stats.item5+'.png'"
                     alt
-                  >
+                  />
                 </a>
               </div>
             </div>
@@ -328,7 +314,7 @@
                   :src="'https://cdn.communitydragon.org/9.18.1/champion/'+matchlist[index].participants[id].championId+'/square'"
                   alt
                   class="match-champs"
-                >
+                />
                 <div class="level">{{matchlist[index].participants[id].stats.champLevel}}</div>
               </div>
 
@@ -338,31 +324,31 @@
                   v-tooltip="getSummoners(matchlist[index].participants[id].spell1Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/'+summonername[matchlist[index].participants[id].spell1Id]+'.png'"
                   alt
-                >
+                />
                 <img
                   class="match-team-icon"
                   v-tooltip="getSummoners(matchlist[index].participants[id].spell2Id)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/'+summonername[matchlist[index].participants[id].spell2Id]+'.png'"
                   alt
-                >
+                />
                 <img
                   class="match-team-icon"
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item6)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item6+'.png'"
                   alt
-                >
+                />
               </div>
               <div class="match-summoners">
                 <img
                   class="match-team-icon"
                   :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[id].stats.perkPrimaryStyle+'.png'"
                   alt
-                >
+                />
                 <img
                   class="match-team-icon"
                   :src="'https://u.gg/assets/lol/runes/'+matchlist[index].participants[id].stats.perkSubStyle+'.png'"
                   alt
-                >
+                />
               </div>
               <div class="team-summary">
                 <p>
@@ -379,32 +365,32 @@
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item0)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item0+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item1)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item1+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item2)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item2+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item3)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item3+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item4)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item4+'.png'"
                   alt
-                >
+                />
                 <img
                   v-tooltip="getItem(matchlist[index].participants[id].stats.item5)"
                   :src="'http://ddragon.leagueoflegends.com/cdn/9.18.1/img/item/'+matchlist[index].participants[id].stats.item5+'.png'"
                   alt
-                >
+                />
               </div>
             </div>
           </div>
@@ -544,7 +530,7 @@ export default {
   async asyncData({ params, error, redirect }) {
     let matchlist = []
     let partlist = []
-    let server = 'http://effy.moe' //http://157.230.163.198
+    let server = '' //http://157.230.163.198
     try {
       let summoner = await axios.get(
         `${server}/riot-api/na1/${encodeURIComponent(params.id)}`
@@ -624,11 +610,11 @@ Array.prototype.sum = function(prop) {
 }
 
 let tier = {
-  i: '1',
-  ii: '2',
-  iii: '3',
-  iv: '4',
-  v: '5'
+  I: '1',
+  II: '2',
+  III: '3',
+  IV: '4',
+  V: '5'
 }
 
 let emblem = {
@@ -807,13 +793,15 @@ let champName = {
   '516': 'Ornn',
   '555': 'Pyke',
   '518': 'Neeko',
-  '517': 'Sylas'
+  '517': 'Sylas',
+  '246': 'Qiyana'
 }
 
 let rankName = {
   RANKED_SOLO_5x5: 'Ranked Solo/Duo',
   RANKED_FLEX_TT: 'Ranked Twisted Treeline',
-  RANKED_FLEX_SR: 'Ranked Flex'
+  RANKED_FLEX_SR: 'Ranked Flex',
+  RANKED_TFT: 'Ranked Team Fight Tactics'
 }
 
 let queueName = {
@@ -929,7 +917,9 @@ let queueName = {
   '1001': 'PROJECT: Hunters',
   '1010': 'Snow Battle ARURF',
   '1011': 'Snow Battle ARURF',
-  '1200': 'Nexus Blitz'
+  '1200': 'Nexus Blitz',
+  '1090': 'Team Fight Tactics',
+  '1100': 'Team Fight Tactics Ranked'
 }
 </script>
 
@@ -1212,8 +1202,8 @@ section {
 }
 .rank-group {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.15);
+  flex: 1;
 }
 
 .summoner-verification {
@@ -1234,7 +1224,6 @@ section {
   justify-content: space-evenly;
   text-align: center;
   font-size: 18px;
-  flex-direction: column;
 }
 .rank-emblem > img {
   width: 7em;
@@ -1302,17 +1291,19 @@ section {
   width: 5em;
 }
 
-.rank-data {
+ .rank-data {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
-}
+  padding: .5em;
+} 
 
 .rank-champ {
   display: flex;
   justify-content: space-around;
-  margin: 1em 0;
+  padding: .5em;
+  flex: 1;
 }
 
 .match-card {
@@ -1765,19 +1756,20 @@ section {
   }
   .rank-group {
     display: flex;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.15);
     padding: 0.5em;
+    flex: 1;
   }
   .rank-group:nth-child(odd) {
     margin-top: -1px;
     margin-bottom: -1px;
   }
-  .rank-data {
+   .rank-data {
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: center;
-  }
+  } 
   .rank-summary {
     padding: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.125);
@@ -1819,6 +1811,7 @@ section {
     display: flex;
     justify-content: space-around;
     margin: 1em 0;
+    background-color: rgba(0, 0, 0, 0.25);
   }
   .rank-ratio {
     font-size: 12px;

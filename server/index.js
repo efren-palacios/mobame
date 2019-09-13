@@ -48,7 +48,7 @@ async function start() {
       const { data } = await axios({
         responseType: 'stream',
         method: 'get',
-        url: `https://${region}.api.riotgames.com/lol/league/v4/positions/by-summoner/${summoner}`,
+        url: `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner}`,
         headers: {
           'X-Riot-Token': key
         }
