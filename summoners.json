@@ -1,6 +1,6 @@
 {
   "type": "summoner",
-  "version": "9.18.1",
+  "version": "9.23.1",
   "data": {
     "SummonerBarrier": {
       "id": "SummonerBarrier",
@@ -16,9 +16,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -65,9 +63,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "21",
       "summonerLevel": 4,
       "modes": [
@@ -116,9 +112,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -220,9 +214,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -343,9 +335,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -392,23 +382,18 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "3",
       "summonerLevel": 4,
       "modes": [
-        "CLASSIC",
-        "ODIN",
-        "TUTORIAL",
         "ARAM",
-        "ASCENSION",
-        "FIRSTBLOOD",
+        "TUTORIAL",
+        "CLASSIC",
+        "GAMEMODEX",
         "URF",
         "ARSR",
         "DOOMBOTSTEEMO",
         "ONEFORALL",
-        "GAMEMODEX",
         "PRACTICETOOL"
       ],
       "costType": "No Cost",
@@ -442,9 +427,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -491,9 +474,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "4",
       "summonerLevel": 7,
       "modes": [
@@ -545,9 +526,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -653,9 +632,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -731,23 +708,20 @@
       "key": "7",
       "summonerLevel": 1,
       "modes": [
-        "CLASSIC",
-        "ODIN",
-        "TUTORIAL",
         "ARAM",
-        "ASCENSION",
-        "FIRSTBLOOD",
-        "ASSASSINATE",
+        "TUTORIAL",
+        "CLASSIC",
+        "STARGUARDIAN",
+        "GAMEMODEX",
+        "TUTORIAL_MODULE_2",
         "URF",
         "ARSR",
+        "ASSASSINATE",
         "DOOMBOTSTEEMO",
-        "STARGUARDIAN",
-        "PROJECT",
         "ONEFORALL",
+        "PRACTICETOOL",
         "TUTORIAL_MODULE_1",
-        "TUTORIAL_MODULE_2",
-        "GAMEMODEX",
-        "PRACTICETOOL"
+        "PROJECT"
       ],
       "costType": "No Cost",
       "maxammo": "-1",
@@ -780,9 +754,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -918,9 +890,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -967,9 +937,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "52",
       "summonerLevel": 1,
       "modes": [
@@ -1006,9 +974,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1055,9 +1021,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "50",
       "summonerLevel": 1,
       "modes": [
@@ -1094,9 +1058,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1143,9 +1105,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "30",
       "summonerLevel": 1,
       "modes": [
@@ -1182,9 +1142,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1231,9 +1189,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "31",
       "summonerLevel": 1,
       "modes": [
@@ -1270,9 +1226,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1348,14 +1302,13 @@
       "key": "11",
       "summonerLevel": 9,
       "modes": [
-        "CLASSIC",
-        "TUTORIAL",
-        "FIRSTBLOOD",
         "URF",
+        "CLASSIC",
         "ARSR",
         "DOOMBOTSTEEMO",
         "ONEFORALL",
         "PRACTICETOOL",
+        "TUTORIAL",
         "GAMEMODEX"
       ],
       "costType": "No Cost",
@@ -1389,9 +1342,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1438,9 +1389,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "39",
       "summonerLevel": 6,
       "modes": [
@@ -1477,9 +1426,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
@@ -1526,9 +1473,7 @@
         "0",
         "0"
       ],
-      "vars": [
-        
-      ],
+      "vars": [],
       "key": "32",
       "summonerLevel": 6,
       "modes": [
@@ -1566,9 +1511,7 @@
         0
       ],
       "costBurn": "0",
-      "datavalues": {
-        
-      },
+      "datavalues": {},
       "effect": [
         null,
         [
